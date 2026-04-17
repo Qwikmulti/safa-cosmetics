@@ -3,13 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug } from "../../../lib/posts";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const slug = (await params).slug;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Article" };
   return { title: post.title, description: post.excerpt };
 }
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const post = getPostBySlug(slug);
   if (!post) {
