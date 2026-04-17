@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { getAllPosts, Post } from "../../lib/posts";
 
 export const metadata: Metadata = {
   title: "Beauty Journal",
@@ -8,74 +9,7 @@ export const metadata: Metadata = {
     "Tips, trends and tutorials from the SAFA Hair & Cosmetics team.",
 };
 
-const posts = [
-  {
-    slug: "how-to-care-for-4c-hair",
-    title: "The Ultimate Guide to Caring for 4C Hair",
-    excerpt:
-      "Type 4C hair is the most tightly coiled and requires consistent moisture and gentle handling. Here's everything you need to know.",
-    category: "Hair Care",
-    readTime: "5 min read",
-    date: "March 15, 2025",
-    catColor: "#4caf7d",
-    img: "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&q=75&auto=format&fit=crop",
-  },
-  {
-    slug: "best-wigs-beginners",
-    title: "Best Wigs for Beginners: Where to Start",
-    excerpt:
-      "Thinking about trying a wig for the first time? We break down the different types, how to choose the right one, and how to style it.",
-    category: "Wigs & Weaves",
-    readTime: "6 min read",
-    date: "March 5, 2025",
-    catColor: "#e91e8c",
-    img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=75&auto=format&fit=crop",
-  },
-  {
-    slug: "afro-hair-moisture-tips",
-    title: "5 Ways to Keep Afro Hair Moisturised All Week",
-    excerpt:
-      "Moisture retention is the foundation of healthy afro hair. Discover our top tips for locking in hydration and reducing breakage.",
-    category: "Natural Hair",
-    readTime: "4 min read",
-    date: "Feb 20, 2025",
-    catColor: "#c9a84c",
-    img: "https://images.unsplash.com/photo-1556760544-74068565f05c?w=800&q=75&auto=format&fit=crop",
-  },
-  {
-    slug: "foundation-for-dark-skin-tones",
-    title: "Finding the Perfect Foundation for Deep Skin Tones",
-    excerpt:
-      "The beauty industry has come a long way in inclusive shade ranges. We've curated the best foundations available in-store for deeper complexions.",
-    category: "Makeup",
-    readTime: "5 min read",
-    date: "Feb 10, 2025",
-    catColor: "#ef5350",
-    img: "https://images.unsplash.com/photo-1631214240010-9e71c7bbd0f6?w=800&q=75&auto=format&fit=crop",
-  },
-  {
-    slug: "braiding-hair-guide",
-    title: "Braiding Hair 101: Kanekalon, Marley & More",
-    excerpt:
-      "Not all braiding hair is the same. Learn about different textures, weights, and techniques to achieve your desired style.",
-    category: "Hair Extensions",
-    readTime: "7 min read",
-    date: "Jan 28, 2025",
-    catColor: "#ab47bc",
-    img: "https://images.unsplash.com/photo-1617106600823-98f0cf2e87c2?w=800&q=75&auto=format&fit=crop",
-  },
-  {
-    slug: "skincare-routine-melanin-rich-skin",
-    title: "Building a Skincare Routine for Melanin-Rich Skin",
-    excerpt:
-      "From hyperpigmentation to SPF, here's how to build a simple but effective routine that works for darker skin tones.",
-    category: "Skincare",
-    readTime: "6 min read",
-    date: "Jan 12, 2025",
-    catColor: "#64b5f6",
-    img: "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=800&q=75&auto=format&fit=crop",
-  },
-];
+const posts: Post[] = getAllPosts();
 
 export default function BlogPage() {
   const [featured, ...rest] = posts;
