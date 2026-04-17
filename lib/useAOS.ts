@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, RefObject } from 'react';
 
-export function useAOS<T extends HTMLElement = HTMLElement>(): RefObject<T> {
+export function useAOS<T extends HTMLElement = HTMLElement>(): RefObject<T | null> {
   const ref = useRef<T>(null);
 
   useEffect(() => {
