@@ -3,16 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlug } from "../../../lib/posts";
 
-type Props = { params: { slug: string } };
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const slug = (await params).slug;
+  const post = getPostBySlug(slug);
   if (!post) return { title: "Article" };
   return { title: post.title, description: post.excerpt };
 }
-
-export default function PostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function PostPage({ params }: { params: { slug: string } }) {
+  const slug = (await params).slug;
+  const post = getPostBySlug(slug);
   if (!post) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] pt-24 text-center text-white">

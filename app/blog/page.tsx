@@ -52,7 +52,10 @@ export default function BlogPage() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Featured post */}
         <div className="mb-16">
-          <div className="rounded-3xl overflow-hidden border border-[#2a2a2a] hover:border-[#e91e8c]/40 transition-all duration-300 group cursor-pointer">
+          <Link
+            href={`/blog/${featured.slug}`}
+            className="rounded-3xl overflow-hidden border border-[#2a2a2a] hover:border-[#e91e8c]/40 transition-all duration-300 group block"
+          >
             <div className="grid lg:grid-cols-2">
               <div className="relative aspect-video lg:aspect-auto min-h-72 overflow-hidden">
                 <Image
@@ -94,7 +97,7 @@ export default function BlogPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Article grid */}
@@ -106,11 +109,13 @@ export default function BlogPage() {
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {rest.map((post) => (
-            <article
+            <Link
               key={post.slug}
-              className="bg-[#111111] border border-[#2a2a2a] rounded-2xl overflow-hidden hover:border-[#e91e8c]/40 transition-all duration-300 hover:-translate-y-1 group cursor-pointer"
+              href={`/blog/${post.slug}`}
+              className="block"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <article className="bg-[#111111] border border-[#2a2a2a] rounded-2xl overflow-hidden hover:border-[#e91e8c]/40 transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
+                <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={post.img}
                   alt={post.title}
@@ -125,8 +130,8 @@ export default function BlogPage() {
                 >
                   {post.category}
                 </span>
-              </div>
-              <div className="p-5">
+                </div>
+                <div className="p-5">
                 <div className="flex items-center gap-3 text-[#888888] text-xs mb-3">
                   <span>{post.date}</span>
                   <span>·</span>
@@ -147,8 +152,9 @@ export default function BlogPage() {
                     →
                   </span>
                 </div>
-              </div>
-            </article>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
 
