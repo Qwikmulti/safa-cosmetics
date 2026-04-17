@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --safa-black: #0a0a0a;
+  --safa-deep: #111111;
+  --safa-card: #1a1a1a;
+  --safa-border: #2a2a2a;
+  --safa-pink: #e91e8c;
+  --safa-rose: #ff4db8;
+  --safa-gold: #c9a84c;
+  --safa-cream: #faf5f0;
+  --safa-muted: #888888;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--safa-black);
+  color: var(--safa-cream);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--safa-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--safa-pink);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--safa-pink);
+  color: white;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gradient mesh background */
+.mesh-bg {
+  background-color: var(--safa-black);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(233, 30, 140, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(233, 30, 140, 0.05) 0%, transparent 40%);
+}
+
+/* Shimmer effect for loading states */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--safa-cream) 0%,
+    var(--safa-pink) 50%,
+    var(--safa-cream) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Pink glow */
+.pink-glow {
+  box-shadow: 0 0 30px rgba(233, 30, 140, 0.3), 0 0 60px rgba(233, 30, 140, 0.1);
+}
+
+/* Gold glow */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+}
+
+/* Border gradient */
+.border-gradient {
+  background: linear-gradient(var(--safa-card), var(--safa-card)) padding-box,
+              linear-gradient(135deg, var(--safa-pink), var(--safa-gold)) border-box;
+  border: 1px solid transparent;
+}
+
+/* Animate on scroll utility */
+.aos {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.aos.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 20s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
