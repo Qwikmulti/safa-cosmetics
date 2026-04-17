@@ -116,4 +116,4 @@ Configure your SMTP provider in `.env.local`. Works with Gmail, SendGrid, Mailgu
 
 ---
 
-© 2025 SAFA HAIR & COSMETICS LTD
+© 2026 SAFA HAIR & COSMETICS LTD

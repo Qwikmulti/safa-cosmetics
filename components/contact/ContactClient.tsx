@@ -55,8 +55,8 @@ export default function ContactClient() {
       {/* Header with image */}
       <section className="relative py-24 px-6 border-b border-[#2a2a2a] overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1556228720-da6b06b1ba5e?w=1800&q=60&auto=format&fit=crop"
+            <Image
+              src="/4.webp"
             alt="Contact background"
             fill
             className="object-cover opacity-15"
